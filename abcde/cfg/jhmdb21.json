@@ -1,0 +1,73 @@
+{
+  "model": {
+    "num_classes": 21,
+    "backbone": "resnet50",
+    "pretrained": true,
+    "backbone_pretrained_path": "pretrained/tsn_r50_8xb32_1x1x8_100e_kinetics400_rgb_20220818-2692d16c.pth",
+    "freeze_backbone_early": true,
+    "image_size": 224,
+    "clip_length": 16,
+    "num_points": 4,
+    "predictor_hidden": 64,
+    "gaussian_sigma": 0.3,
+    "motion_alpha": 0.3,
+    "mask_normalization": "peak",
+    "mamba_backend": "official",
+    "d_state": 16,
+    "d_conv": 4,
+    "expand": 2.0,
+    "bidirectional": true,
+    "num_layers": 1,
+    "dilations": [
+      1
+    ],
+    "projection_hidden": 384,
+    "head_dim": 256,
+    "head_depth": 4,
+    "cls_depth": null,
+    "reg_depth": null,
+    "head_norm": "batch",
+    "head_activation": "relu",
+    "center_offset_clamp": 32.0,
+    "anchors": [
+      16.0,
+      32.0,
+      64.0,
+      128.0,
+      256.0
+    ],
+    "keyframe": -1,
+    "sequence_chunk_size": 0,
+    "freeze_backbone_bn": false
+  },
+  "loss": {
+    "focal_alpha": 0.25,
+    "focal_gamma": 2.0,
+    "cls_weight": 1.0,
+    "box_weight": 1.0,
+    "consistency_weight": 0.5,
+    "match_topk": 4,
+    "positive_iou": 0.15,
+    "ignore_iou": 0.7,
+    "targets_normalized": false
+  },
+  "train": {
+    "epochs": 10,
+    "batch_size": 6,
+    "accumulation_steps": 18,
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "warmup_steps": 50,
+    "amp": true,
+    "grad_clip": 5.0,
+    "seed": 42,
+    "workers": 4,
+    "sampling_rate": 1,
+    "jitter": 0.2,
+    "hue": 0.1,
+    "saturation": 1.5,
+    "exposure": 1.5,
+    "score_threshold": 0.005,
+    "nms_threshold": 0.5
+  }
+}
